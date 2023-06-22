@@ -19,7 +19,7 @@ Le validazioni e i controlli possiamo farli anche in un secondo momento.*/
 
 //1)L'utente cliccando su un bottone genererà una griglia di gioco quadrata
 
-const rowElement = document.querySelector(".row");
+const rigaElemento = document.querySelector(".row");
 
 const button = document.querySelector("#button-grid");
 
@@ -30,48 +30,88 @@ button.addEventListener("click" , function(){
 
     const difficulty = parseInt(document.querySelector('#difficulty').value);
 
-    console.log('Hai selezionato difficoltà: ', difficulty)
+    console.log('Hai selezionato difficoltà: ', difficulty);
 
-    rowElement.innerHTML = "" ;
+    rigaElemento.innerHTML = "" ;
+
+    //inseriamo 16 numeri random 
+    const numeroBombe = 16 ;
+
+    const indexBombe = [];
+
+    while(indexBombe.length < numeroBombe){
+
+        let numeroRandom = generaNumeriRandoms(1 , difficulty);
+
+        if(!indexBombe.includes(numeroRandom)){
+            
+        console.log(numeroRandom , "Numero Random" , typeof numeroRandom);
+        indexBombe.push(numeroRandom);
+        }
+
+    }
+    
+    console.log(indexBombe , "Numero Bombe" ,  typeof indexBombe);
+
+    console.log(indexBombe.lenght < 16);
+    
+
+    // diamo un classe differente in base alla difficoltà
+
+    let classeValoreBox = "";
+        if(difficulty == "49"){
+           classeValoreBox = "box-difficile";
+        }
+        else if(difficulty == "81"){
+            classeValoreBox = "box-medio";
+        }
+        else{
+           classeValoreBox = "box-facile";
+        }
+        console.log(classeValoreBox);
 
     for(let i = 1; i<=difficulty; i++){
         // creare la cella
-        const rowClickable = document.createElement("div");
-        rowClickable.classList.add("clickable");
+        const rigaCliccabile = document.createElement("div");
+        rigaCliccabile.classList.add("clickable" , classeValoreBox );
 
-        const divCell = document.createElement("div");
-        divCell.classList.add("cell");
+        const divCella = document.createElement("div");
+        divCella.classList.add("cell");
 
-        divCell.innerHTML = i ;
+        divCella.innerHTML = i ;
 
-        divCell.addEventListener("click" , function (){
+        divCella.addEventListener("click" , function (){
            
             this.classList.add("activated");
             
             console.log(this.innerHTML);
+
+        
+        const cellsElement = document.querySelectorAll(".cell")
+
+        for(let i = 0 ; i < cellsElement.lenght ; i++ ){
+            const currentElement = cellsElement[i].innerHTML ;
+
+            if(indexBombe.includes(currentElement)){
+                currentElement[i].style.backgroundColor = "red";
+            }
+        }
+
         })
 
-        rowClickable.append(divCell);
+        rigaCliccabile.append(divCella);
         
-        rowElement.append(rowClickable);   
+        rigaElemento.append(rigaCliccabile);   
 
     }
-
+    
 });
 
 
-// creare due classi alternative 
-
-const valoreMedia = 81 ;
-
-const valoreDifficile = 49 ;
-
-//ricreare le dimensioni del clickated da 10 a 9 e poi 7
-
-
-//cambiare la variabile cycle 
-//in base al numero che mi ritorna (value) un if else 
-
 
 // FUNCTIONS
+
+function generaNumeriRandoms(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 

@@ -52,6 +52,10 @@ main{
     background-color: crimson;
 }
 
+.box-facile{
+    width: calc(600px / 10);
+    height: calc(600px / 10);
+}
 .box-medio {
     width: calc(600px / 9);
     height: calc(600px / 9);
