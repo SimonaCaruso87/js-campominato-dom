@@ -51,3 +51,13 @@ main{
 .cell.activated {
     background-color: crimson;
 }
+
+.box-medio {
+    width: calc(600px / 9);
+    height: calc(600px / 9);
+}
+
+.box-difficile {
+    width: calc(600px / 7);
+    height: calc(600px / 7);
+}

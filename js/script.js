@@ -23,15 +23,18 @@ const rowElement = document.querySelector(".row");
 
 const button = document.querySelector("#button-grid");
 
-const numberCycle = 100 ;
+
+//aggiunta evento click
 
 button.addEventListener("click" , function(){
 
-const difficulty = parseInt(document.querySelector('#difficulty').value);
+    const difficulty = parseInt(document.querySelector('#difficulty').value);
 
-rowElement.innerHTML = "" ;
+    console.log('Hai selezionato difficoltà: ', difficulty)
 
-    for(let i = 1; i<=numberCycle; i++){
+    rowElement.innerHTML = "" ;
+
+    for(let i = 1; i<=difficulty; i++){
         // creare la cella
         const rowClickable = document.createElement("div");
         rowClickable.classList.add("clickable");
@@ -51,13 +54,21 @@ rowElement.innerHTML = "" ;
         rowClickable.append(divCell);
         
         rowElement.append(rowClickable);   
+
     }
 
 });
 
 
 // creare due classi alternative 
-//per ricreare le dimensioni del clickated da 10 a 9 e poi 7
+
+const valoreMedia = 81 ;
+
+const valoreDifficile = 49 ;
+
+//ricreare le dimensioni del clickated da 10 a 9 e poi 7
+
+
 //cambiare la variabile cycle 
 //in base al numero che mi ritorna (value) un if else 
 
