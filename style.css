@@ -1,0 +1,53 @@
+/* ----------------------------------
+    RESET
+-----------------------------------*/    
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("1181582.jpg");
+    background-size: cover;
+    object-fit: contain;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.row{
+    width: 600px;
+    margin: 0 auto;
+    background-color:#053B37;
+}
+
+.div-grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+      
+.clickable {
+    width: calc(100% / 10);
+    height: 60px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 1px;
+}
+
+.cell{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+      
+.cell.activated {
+    background-color: crimson;
+}
